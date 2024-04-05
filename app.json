@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "flix",
-    "slug": "flix",
+    "name": "NativeFlex",
+    "slug": "NativeFlex",
     "version": "1.0.0",
 
-    "scheme": "flix",
+    "scheme": "NativeFlex",
     "web": {
       "bundler": "metro",
       "output": "static",
