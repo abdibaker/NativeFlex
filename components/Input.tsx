@@ -8,11 +8,20 @@ interface InputProps {
   className?: string;
   inputStyle?: string;
   secureTextEntry?: boolean;
+  onChangeText?: (text: string) => void;
   [key: string]: any;
 }
 
 const Input: React.FC<InputProps> = observer(
-  ({ children, placeholder, className, inputStyle, secureTextEntry, ...otherProps }) => {
+  ({
+    children,
+    placeholder,
+    className,
+    inputStyle,
+    secureTextEntry,
+    onChangeText,
+    ...otherProps
+  }) => {
     const isPasswordVisible = useObservable(false);
     return (
       <View
@@ -22,6 +31,7 @@ const Input: React.FC<InputProps> = observer(
           placeholder={placeholder || ''}
           className={`flex-grow text-slate-50 placeholder:text-slate-400 ${inputStyle}`}
           secureTextEntry={secureTextEntry && !isPasswordVisible.get()}
+          onChangeText={onChangeText}
           {...otherProps}
         />
         {secureTextEntry && (

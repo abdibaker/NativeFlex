@@ -1,6 +1,8 @@
 import { observable } from '@legendapp/state';
 import axios from 'axios';
 
+import { appwrite } from '~/appwrite';
+
 interface User {
   username: string;
   email: string;
@@ -10,9 +12,15 @@ interface User {
 export const $user = observable<User | undefined>();
 export let isLoggedIn$: boolean;
 
-export async function login(username: string, password: string) {
-  const { data } = await axios.post<User>('/login', { username, password });
-  $user.set(data);
+export async function login() {
+  console.log('start');
+  try {
+    const user = await appwrite.account.create('1', 'abdibaker1@gmail.com', 'Heroally1');
+    console.log('🚀 ~ login ~ user:', user);
+  } catch (error) {
+    console.log(error);
+  }
+  // $user.set(user);
 }
 
 export async function logout() {
